@@ -37,17 +37,20 @@ const dropdownNavigation = () => {
         bodyElement.style.height = "100%";
         bodyElement.style.overflowY = "hidden";
 
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.color = "#333";
-        }
+        Array.from(elements).forEach((elements) => {
+            elements.style.color = "#333"
+         });
     }
     else {
         header.style.height = "0";
         header.style.backgroundColor = "transparent";
         header.style.top = "40px";
 
-        navigation.style.display = "none";
-        navButtons.style.display = "none";
+        if(window.innerWidth <= 808){
+            navigation.style.display = "none";
+            navButtons.style.display = "none";
+        }
+
 
         logo.style.color = "white";
         hamburger.style.color = "white";
@@ -57,9 +60,9 @@ const dropdownNavigation = () => {
         bodyElement.style.overflowY = "auto";
 
 
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.color = "white";
-        }
+        Array.from(elements).forEach((elements) => {
+            elements.style.color = "white"
+         });
         scrolledNavigation();
 
     }
@@ -101,18 +104,18 @@ const handleMouseOut = () => {
 
 // Carousel slider function
 const slider = (count) => {
-    for (let index = 0; index < cards.length; index++) {
-        
+    cards.forEach((card, index) => {
+         
         if (index === count) {
-            cards[index].style.backgroundColor = "#1fdb84";
-            cards[index].style.color = "white";
+            card.style.backgroundColor = "#1fdb84";
+            card.style.color = "white";
             cardText[index].style.color = "white";
             cardUserText[index].style.color = "white";
             cardLogo[index].src = "https://dl.dropboxusercontent.com/s/jrvy4nec2hyxtgh/group-6.png?dl=0"
             dots[index].style.backgroundColor = "#1fdb84";
         }
         else {
-            cards[index].style.backgroundColor = "white";
+            card.style.backgroundColor = "white";
             cardUserText[index].style.color = "#031d5b";
             cardText[index].style.color = "#5b6c94";
             cardLogo[index].src = "https://dl.dropboxusercontent.com/s/4mw6ondhuf2mv0s/group-7.png?dl=0"
@@ -120,17 +123,15 @@ const slider = (count) => {
 
         }
         if (window.innerWidth >= 300) {
-            cards[index].style.left = `-${count * 350}px`;
+            card.style.left = `-${count * 350}px`;
         }
         if (window.innerWidth >= 800) {
-            cards[index].style.left = `-${count * 400}px`;
+            card.style.left = `-${count * 400}px`;
         }
         if (window.innerWidth >= 801 && window.innerWidth < 1000) {
-            cards[index].style.left = `-${count * 300}px`;
+            card.style.left = `-${count * 300}px`;
         }
-    }
-    cards.forEach((element, index) => {
-        element.style.transform = `translateX(${index * 10}px)`
+        card.style.transform = `translateX(${index * 10}px)`
     });
 }
 
@@ -158,11 +159,10 @@ function changingMediaQuery() {
     logo.style.color = "white";
     hamburger.style.color = "white";
 
-    for (let i = 0; i < elements.length; i++) {
-        elements[i].style.color = "white";
+    Array.from(elements).forEach((elements) => {
+        elements.style.color = "white"
         bodyElement.style.overflowY = "auto";
-    }
-
+     });
     if (window.innerWidth >= 100) {
         bodyElement.style.overflowY = "auto";
         navigation.style.display = "flex";
